@@ -3,48 +3,63 @@
 <html>
 <head>
   <title>Kirti ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial;
-      background: radial-gradient(circle at center, #ffd6e8, #ff99c8, #ff4d88);
+      font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
-      text-align: center;
+      background: radial-gradient(circle at center, #ffc1da, #ff8fb8, #ff4d88);
+      color: white;
     }
 
-    #start, #end {
+    /* TOP UI */
+    #topBar {
       position: absolute;
       width: 100%;
-      top: 40%;
-      color: white;
-      z-index: 5;
+      top: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
-    button {
-      padding: 12px 24px;
-      border: none;
-      background: white;
-      color: #ff4d88;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    .box {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 18px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      font-size: 16px;
     }
 
-    #game { display: none; }
+    /* TITLE */
+    #title {
+      position: absolute;
+      width: 100%;
+      top: 70px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 500;
+    }
 
-    /* BIG GLOWING HEART */
+    #subtitle {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* BIG HEART */
     #centerHeart {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 140px;
-      color: #ff1a66;
-      text-shadow: 0 0 30px rgba(255,0,100,0.8);
-      animation: pulse 1.5s infinite;
-      opacity: 0.95;
+      color: #ff2a75;
+      text-shadow: 0 0 40px rgba(255,0,100,0.8);
+      animation: pulse 2.5s infinite;
     }
 
     #centerHeart span {
@@ -53,57 +68,54 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 28px;
-      color: white;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
     @keyframes pulse {
       0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.1); }
+      50% { transform: translate(-50%, -50%) scale(1.08); }
       100% { transform: translate(-50%, -50%) scale(1); }
     }
 
-    /* FLOATING HEARTS */
+    /* CLICK BUTTON */
+    #startBtn {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.25);
+      padding: 12px 25px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    /* MESSAGE BOX */
+    #msgBox {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      background: rgba(255,255,255,0.25);
+      padding: 15px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      font-size: 15px;
+    }
+
+    /* FLOAT HEARTS */
     .heart {
       position: absolute;
-      font-size: 26px;
+      font-size: 22px;
+      animation: fall 6s linear;
       cursor: pointer;
-      animation: fall 4s linear;
-      color: white;
-      text-shadow: 0 0 8px rgba(255,255,255,0.6);
     }
 
     @keyframes fall {
       from { top: -10%; }
-      to { top: 100%; }
-    }
-
-    #msg {
-      position: absolute;
-      bottom: 20%;
-      width: 100%;
-      font-size: 20px;
-      color: white;
-      padding: 0 20px;
-      font-weight: 500;
-      text-shadow: 0 0 8px rgba(0,0,0,0.3);
-    }
-
-    #score {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      color: white;
-      font-size: 18px;
-    }
-
-    #timer {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      color: white;
-      font-size: 18px;
+      to { top: 110%; }
     }
 
   </style>
@@ -116,25 +128,21 @@
   <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
 </audio>
 
-<div id="start">
-  <h2>Kirti… just 30 seconds? 🥺</h2>
-  <button onclick="startGame()">Start</button>
+<div id="topBar">
+  <div class="box">❤️ <span id="score">0</span></div>
+  <div class="box">⏳ <span id="time">30</span></div>
 </div>
 
-<div id="game">
-  <div id="score">❤️ 0</div>
-  <div id="timer">⏳ 30</div>
-  <div id="msg"></div>
+<div id="title">💗 Kirti… just 30 seconds?</div>
+<div id="subtitle">Click the hearts to read something from my heart 💗</div>
 
-  <!-- BIG CENTER HEART -->
+<div id="centerHeart">❤️<span>Kirti</span></div>
 
-  <div id="centerHeart">❤️<span>Kirti</span></div>
-</div>
+<div id="startBtn" onclick="startGame()">Click Hearts 💗</div>
 
-<div id="end" style="display:none;">
-  <h2>Siddharth → Kirti ❤️</h2>
-  <p id="final"></p>
-  <button onclick="location.reload()">Again?</button>
+<div id="msgBox">
+Find all the hearts and read what I want to say to you… <br>
+<b>All of it is for you, Kirti 💗</b>
 </div>
 
 <script>
@@ -154,28 +162,30 @@ let messages = [
 "And yeah… I’m trying, if I fail you need to teach me, and that goes vice versa",
 "Even making this… is me trying",
 
-"I just want you to trust me a little regardless of that past❤️, as I am trying too.....",
-"Finally please don't show this to amu or anyone, very cheesy it is"
+"I just want you to trust me a little regardless of that past ❤️, as I am trying too.....",
+"Finally please don't show this to amu or anyone, very cheesy it is 😅"
 ];
 
 let score = 0;
 let time = 30;
+let started = false;
 
 function startGame() {
-  document.getElementById("start").style.display = "none";
-  document.getElementById("game").style.display = "block";
+  if (started) return;
+  started = true;
+
   document.getElementById("music").play();
 
-  let gameInterval = setInterval(createHeart, 700);
+  setInterval(createHeart, 1200); // slower spawn
 
-  let timerInterval = setInterval(() => {
+  let timer = setInterval(() => {
     time--;
-    document.getElementById("timer").innerText = "⏳ " + time;
+    document.getElementById("time").innerText = time;
 
     if (time <= 0) {
-      clearInterval(timerInterval);
-      clearInterval(gameInterval);
-      endGame();
+      clearInterval(timer);
+      document.getElementById("msgBox").innerHTML =
+      "I’m not perfect… but I’m being real. I don’t want to mess this up ❤️";
     }
   }, 1000);
 }
@@ -183,29 +193,21 @@ function startGame() {
 function createHeart() {
   let heart = document.createElement("div");
   heart.className = "heart";
+  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "Kirti";
 
-  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "Kirti ❤️";
   heart.style.left = Math.random()*90 + "%";
 
   heart.onclick = () => {
     if (score < messages.length) {
-      document.getElementById("msg").innerText = messages[score];
+      document.getElementById("msgBox").innerText = messages[score];
     }
     score++;
-    document.getElementById("score").innerText = "❤️ " + score;
+    document.getElementById("score").innerText = score;
     heart.remove();
   };
 
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 4000);
-}
-
-function endGame() {
-  document.getElementById("game").style.display = "none";
-  document.getElementById("end").style.display = "block";
-
-  document.getElementById("final").innerText =
-  "I’m not perfect… but I’m being real. I don’t want to mess this up. Just give me a chance… ❤️";
+  setTimeout(() => heart.remove(), 6000);
 }
 </script>
 
