@@ -4,122 +4,209 @@
 <head>
   <title>Kirti ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      text-align: center;
-      overflow: hidden;
-      color: white;
-      background: linear-gradient(#ff9ac2, #ff4d88);
-    }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI;
+      overflow:hidden;
+      color:white;
 
-    #topBar {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 15px;
-      font-size: 14px;
-    }
+```
+  /* dreamy bg */
+  background:
+    radial-gradient(circle at 50% 30%, #ffd6e8 0%, #ff9ac2 45%, #ff4d88 100%);
+}
 
-    /* HEART */
-    #heart {
-      font-size: 120px;
-      margin-top: 60px;
-      animation: pulse 1.5s infinite;
-    }
+/* soft sparkles */
+body::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
+  background-size:60px 60px;
+  opacity:.3;
+}
 
-    #heartText {
-      margin-top: -40px;
-      font-size: 24px;
-      font-weight: bold;
-    }
+*{position:relative; z-index:2;}
 
-    @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
+/* top UI */
+#topBar{
+  display:flex;
+  justify-content:space-between;
+  padding:12px;
+}
 
-    /* BUTTON */
-    #startBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background: white;
-      color: #ff4d88;
-      display: inline-block;
-      cursor: pointer;
-    }
+.pill{
+  background:rgba(255,255,255,0.25);
+  padding:8px 14px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  font-size:14px;
+}
 
-    /* MESSAGE */
-    #msgBox {
-      position: fixed;
-      bottom: 20px;
-      width: 90%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.2);
-      padding: 12px;
-      border-radius: 15px;
-      font-size: 14px;
-    }
+#title{ text-align:center; font-size:18px; }
+#subtitle{ text-align:center; font-size:12px; opacity:.9; }
 
-    /* FALLING HEARTS */
-    .heartDrop {
-      position: absolute;
-      font-size: 20px;
-      animation: fall 5s linear;
-      cursor: pointer;
-    }
+/* heart */
+#heartWrap{
+  position:absolute;
+  top:45%; left:50%;
+  transform:translate(-50%,-50%);
+  width:200px;
+  height:180px;
+  animation:pulse 2.5s infinite;
+}
 
-    @keyframes fall {
-      from { top: -10%; }
-      to { top: 100%; }
-    }
+@keyframes pulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1);}
+  50%{transform:translate(-50%,-50%) scale(1.07);}
+}
 
-    #finalChoice {
-      display: none;
-      position: fixed;
-      bottom: 40px;
-      width: 100%;
-      text-align: center;
-    }
+#heartWrap svg{
+  width:100%; height:100%;
+  filter:
+    drop-shadow(0 0 30px rgba(255,0,100,0.7))
+    drop-shadow(0 0 60px rgba(255,0,120,0.5));
+}
 
-    button {
-      margin: 5px;
-      padding: 10px 15px;
-      border-radius: 20px;
-      border: none;
-    }
+#heartText{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:26px;
+  font-weight:bold;
+  text-shadow:0 0 12px rgba(255,255,255,0.8);
+}
+
+/* pedestal */
+#stage{
+  position:absolute;
+  bottom:120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:60px;
+  border-radius:50%;
+  background:linear-gradient(#fff2f7,#ffc0da);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25),
+    inset 0 4px 12px rgba(255,255,255,0.8);
+}
+
+/* button */
+#startBtn{
+  position:absolute;
+  bottom:100px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:10px 20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(10px);
+  cursor:pointer;
+}
+
+/* message */
+#msgBox{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(10px);
+  text-align:center;
+  font-size:13px;
+}
+
+/* falling hearts */
+.heart{
+  position:absolute;
+  font-size:18px;
+  animation:fall 6s linear;
+  cursor:pointer;
+}
+
+@keyframes fall{
+  from{top:-10%;}
+  to{top:110%;}
+}
+
+/* final */
+#finalChoice{
+  display:none;
+  position:absolute;
+  bottom:30px;
+  width:100%;
+  text-align:center;
+}
+
+#finalChoice div{
+  width:85%;
+  margin:auto;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(10px);
+}
+
+button{
+  margin:5px;
+  padding:8px 18px;
+  border-radius:18px;
+  border:none;
+  cursor:pointer;
+}
+```
 
   </style>
-
 </head>
 
 <body>
 
 <div id="topBar">
-  <div>❤️ <span id="score">0</span></div>
-  <div>⏳ <span id="time">30</span></div>
+  <div class="pill">❤️ <span id="score">0</span></div>
+  <div class="pill">⏳ <span id="time">30</span></div>
 </div>
 
-<div id="heart">❤️</div>
-<div id="heartText">Kirti</div>
+<div id="title">💗 Kirti… just 30 seconds?</div>
+<div id="subtitle">Click the hearts to read something from my heart 💗</div>
+
+<div id="heartWrap">
+  <svg viewBox="0 0 100 90">
+    <defs>
+      <radialGradient id="g" cx="50%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#ff7aa8"/>
+        <stop offset="100%" stop-color="#ff2a75"/>
+      </radialGradient>
+    </defs>
+    <path d="M50 80 L10 40 A20 20 0 1 1 50 20 A20 20 0 1 1 90 40 Z"
+          fill="url(#g)"/>
+  </svg>
+  <div id="heartText">Kirti</div>
+</div>
+
+<div id="stage"></div>
 
 <div id="startBtn" onclick="startGame()">Click Hearts 💗</div>
 
 <div id="msgBox">
-All of it is for you, Kirti 💗
+Find all the hearts and read what I want to say to you… <br>
+<b>All of it is for you, Kirti 💗</b>
 </div>
 
 <div id="finalChoice">
-  <p>Would you like to date me seriously? ❤️</p>
-  <button onclick="accept()">Yes 😊</button>
-  <button onclick="accept()">No 😤</button>
+  <div>
+    <p>So… would you like to date me seriously? ❤️</p>
+    <button onclick="accept()">Yes 😊</button>
+    <button onclick="accept()">No 😤</button>
+  </div>
 </div>
 
 <script>
-let messages = [
+let messages=[
 "Kirti… you’re genuinely special to me ❤️",
 "I like knowing youuu…",
 "I want to take care of you",
@@ -135,56 +222,49 @@ let messages = [
 "Very cheesy but yeah 😅"
 ];
 
-let score = 0;
-let time = 30;
-let started = false;
+let score=0,time=30,started=false;
 
-function startGame() {
-  if (started) return;
-  started = true;
+function startGame(){
+ if(started)return;
+ started=true;
 
-  setInterval(createHeart, 800);
+ setInterval(createHeart,1200);
 
-  let timer = setInterval(() => {
-    time--;
-    document.getElementById("time").innerText = time;
-
-    if (time <= 0) {
-      clearInterval(timer);
-      showFinal();
-    }
-  }, 1000);
+ let t=setInterval(()=>{
+  time--;
+  document.getElementById("time").innerText=time;
+  if(time<=0){clearInterval(t);showFinal();}
+ },1000);
 }
 
-function createHeart() {
-  let h = document.createElement("div");
-  h.className = "heartDrop";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random()*90 + "%";
+function createHeart(){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*90+"%";
 
-  h.onclick = () => {
-    if (score < messages.length) {
-      document.getElementById("msgBox").innerText = messages[score];
-    }
-    score++;
-    document.getElementById("score").innerText = score;
-    h.remove();
+ h.onclick=()=>{
+  if(score<messages.length){
+   document.getElementById("msgBox").innerText=messages[score];
+  }
+  score++;
+  document.getElementById("score").innerText=score;
+  h.remove();
+  if(score===messages.length)showFinal();
+ };
 
-    if (score === messages.length) showFinal();
-  };
-
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 5000);
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
 }
 
-function showFinal() {
-  document.getElementById("msgBox").style.display = "none";
-  document.getElementById("finalChoice").style.display = "block";
+function showFinal(){
+ document.getElementById("msgBox").style.display="none";
+ document.getElementById("finalChoice").style.display="block";
 }
 
-function accept() {
-  document.getElementById("finalChoice").innerHTML =
-  "<h2>Hehe… I knew it ❤️</h2>";
+function accept(){
+ document.getElementById("finalChoice").innerHTML=
+ "<h2>Hehe… I knew it ❤️</h2>";
 }
 </script>
 
