@@ -11,25 +11,22 @@
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
       color: white;
-
-      /* 🔥 BACKGROUND IMAGE (replace if you want) */
-      background: url('https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?q=80&w=1974') no-repeat center/cover;
+      background: radial-gradient(circle at center, #ffd1e6 0%, #ff9ac2 40%, #ff4d88 100%);
     }
 
-    /* SOFT PINK OVERLAY */
-    body::after {
+    body::before {
       content: "";
       position: absolute;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255,100,150,0.5), rgba(255,50,100,0.7));
-      top: 0;
-      left: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
     }
 
     * { position: relative; z-index: 2; }
 
-    /* TOP UI */
+    /* TOP BAR */
     #topBar {
       display: flex;
       justify-content: space-between;
@@ -38,16 +35,17 @@
 
     .box {
       background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px);
       padding: 8px 14px;
       border-radius: 20px;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
 
     /* TITLE */
     #title {
       text-align: center;
-      margin-top: 10px;
       font-size: 20px;
+      margin-top: 5px;
     }
 
     #subtitle {
@@ -56,7 +54,7 @@
       opacity: 0.9;
     }
 
-    /* CENTER HEART */
+    /* HEART */
     #centerHeart {
       position: absolute;
       top: 45%;
@@ -64,8 +62,11 @@
       transform: translate(-50%, -50%);
       font-size: 120px;
       color: #ff2a75;
-      text-shadow: 0 0 40px rgba(255,0,100,0.9);
-      animation: pulse 2s infinite;
+      text-shadow:
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 40px rgba(255,0,100,0.9),
+        0 0 60px rgba(255,0,100,0.6);
+      animation: pulse 2.2s infinite;
     }
 
     #centerHeart span {
@@ -73,13 +74,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 26px;
+      font-size: 24px;
       font-weight: bold;
     }
 
     @keyframes pulse {
       0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.1); }
+      50% { transform: translate(-50%, -50%) scale(1.08); }
       100% { transform: translate(-50%, -50%) scale(1); }
     }
 
@@ -115,7 +116,7 @@
     .heart {
       position: absolute;
       font-size: 20px;
-      animation: fall 7s linear;
+      animation: fall 6s linear;
       cursor: pointer;
     }
 
@@ -124,7 +125,7 @@
       to { top: 110%; }
     }
 
-    /* FINAL CHOICE */
+    /* FINAL */
     #finalChoice {
       display: none;
       position: absolute;
@@ -246,7 +247,7 @@ function createHeart() {
   };
 
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 7000);
+  setTimeout(() => heart.remove(), 6000);
 }
 
 function showFinal() {
