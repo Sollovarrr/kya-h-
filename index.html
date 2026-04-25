@@ -4,170 +4,170 @@
 <head>
   <title>Kirti ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto;
-      overflow:hidden;
-      color:white;
-      background:
-        radial-gradient(circle at 50% 30%, #ffd6e8 0%, #ff9ac2 45%, #ff4d88 100%);
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+
+      /* CLEAN DREAMY BACKGROUND */
+      background: radial-gradient(circle at center, #ffd6e8 0%, #ff9ac2 45%, #ff4d88 100%);
     }
 
-```
-/* soft glow dots */
-body::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 2px);
-  background-size:60px 60px;
-  opacity:.3;
-}
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 2px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+    }
 
-*{position:relative; z-index:2;}
+    * { position: relative; z-index: 2; }
 
-#topBar{
-  display:flex;
-  justify-content:space-between;
-  padding:12px;
-}
+    /* TOP BAR */
+    #topBar {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+    }
 
-.pill{
-  background:rgba(255,255,255,0.25);
-  padding:8px 14px;
-  border-radius:20px;
-  backdrop-filter:blur(12px);
-  font-size:14px;
-}
+    .pill {
+      background: rgba(255,255,255,0.25);
+      padding: 8px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+    }
 
-#title{
-  text-align:center;
-  margin-top:6px;
-  font-size:18px;
-}
+    /* TITLE */
+    #title {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 5px;
+    }
 
-#subtitle{
-  text-align:center;
-  font-size:12px;
-  opacity:.9;
-}
+    #subtitle {
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.9;
+    }
 
-/* stage */
-#stage{
-  position:absolute;
-  bottom:130px;
-  left:50%;
-  transform:translateX(-50%);
-  width:260px;
-  height:60px;
-  border-radius:50%;
-  background:linear-gradient(#fff2f7,#ffc0da);
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.25),
-    inset 0 4px 10px rgba(255,255,255,0.7);
-}
+    /* BIG HEART */
+    #heartWrap {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 180px;
+      animation: pulse 2.3s infinite;
+    }
 
-/* heart wrapper */
-#heartWrap{
-  position:absolute;
-  top:46%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:220px;
-  height:200px;
-  animation:pulse 2.4s infinite;
-}
+    #heartWrap svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 25px rgba(255,0,100,0.8));
+    }
 
-@keyframes pulse{
-  0%,100%{transform:translate(-50%,-50%) scale(1);}
-  50%{transform:translate(-50%,-50%) scale(1.06);}
-}
+    #heartText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 26px;
+      font-weight: bold;
+      text-shadow: 0 0 12px rgba(255,255,255,0.8);
+    }
 
-/* glossy heart via SVG */
-#heartWrap svg{
-  width:100%;
-  height:100%;
-  filter:drop-shadow(0 0 25px rgba(255,0,100,.8));
-}
+    @keyframes pulse {
+      0%,100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.08); }
+    }
 
-#heartText{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:26px;
-  font-weight:600;
-  text-shadow:0 0 12px rgba(255,255,255,.8);
-}
+    /* STAGE */
+    #stage {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(#fff2f7, #ffc0da);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
 
-/* button */
-#startBtn{
-  position:absolute;
-  bottom:110px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:10px 22px;
-  border-radius:22px;
-  background:rgba(255,255,255,.3);
-  backdrop-filter:blur(10px);
-  cursor:pointer;
-}
+    /* BUTTON */
+    #startBtn {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
 
-/* msg */
-#msgBox{
-  position:absolute;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  padding:14px;
-  border-radius:18px;
-  background:rgba(255,255,255,.25);
-  backdrop-filter:blur(10px);
-  font-size:13px;
-  text-align:center;
-}
+    /* MESSAGE */
+    #msgBox {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+      text-align: center;
+    }
 
-.heart{
-  position:absolute;
-  font-size:18px;
-  animation:fall 7s linear;
-  cursor:pointer;
-}
+    /* FLOAT HEARTS */
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: fall 7s linear;
+      cursor: pointer;
+    }
 
-@keyframes fall{
-  from{top:-10%;}
-  to{top:110%;}
-}
+    @keyframes fall {
+      from { top: -10%; }
+      to { top: 110%; }
+    }
 
-#finalChoice{
-  display:none;
-  position:absolute;
-  bottom:30px;
-  width:100%;
-  text-align:center;
-}
+    /* FINAL */
+    #finalChoice {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+    }
 
-#finalChoice div{
-  width:85%;
-  margin:auto;
-  padding:16px;
-  border-radius:20px;
-  background:rgba(255,255,255,.3);
-  backdrop-filter:blur(10px);
-}
+    #finalChoice div {
+      width: 85%;
+      margin: auto;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+    }
 
-button{
-  margin:5px;
-  padding:8px 18px;
-  border-radius:18px;
-  border:none;
-  cursor:pointer;
-}
-```
-
+    button {
+      margin: 5px;
+      padding: 8px 18px;
+      border-radius: 18px;
+      border: none;
+      cursor: pointer;
+    }
   </style>
+
 </head>
 
 <body>
@@ -184,6 +184,8 @@ button{
 <div id="title">💗 Kirti… just 30 seconds?</div>
 <div id="subtitle">Click the hearts to read something from my heart 💗</div>
 
+<!-- HEART -->
+
 <div id="heartWrap">
   <svg viewBox="0 0 100 90">
     <defs>
@@ -192,8 +194,7 @@ button{
         <stop offset="100%" stop-color="#ff2a75"/>
       </radialGradient>
     </defs>
-    <path d="M50 80 L10 40 A20 20 0 1 1 50 20 A20 20 0 1 1 90 40 Z"
-          fill="url(#g)"/>
+    <path d="M50 80 L10 40 A20 20 0 1 1 50 20 A20 20 0 1 1 90 40 Z" fill="url(#g)"/>
   </svg>
   <div id="heartText">Kirti</div>
 </div>
@@ -216,7 +217,7 @@ Find all the hearts and read what I want to say to you… <br>
 </div>
 
 <script>
-let messages=[
+let messages = [
 "Kirti… you’re genuinely special to me ❤️",
 "I like knowing youuu…",
 "I want to take care of you",
