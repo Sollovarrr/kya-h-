@@ -3,70 +3,106 @@
 <html>
 <head>
   <title>Kirti ❤️</title>
+
   <style>
     body {
       margin: 0;
       font-family: Arial;
-      background: linear-gradient(#ffe6f0, white);
+      background: radial-gradient(circle at center, #ffd6e8, #ff99c8, #ff4d88);
       overflow: hidden;
       text-align: center;
     }
 
-```
-#start, #end {
-  position: absolute;
-  width: 100%;
-  top: 40%;
-}
+    #start, #end {
+      position: absolute;
+      width: 100%;
+      top: 40%;
+      color: white;
+    }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #ff4d88;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-}
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: white;
+      color: #ff4d88;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-#game { display: none; }
+    #game { display: none; }
 
-.heart {
-  position: absolute;
-  font-size: 28px;
-  cursor: pointer;
-  animation: fall 4s linear;
-}
+    /* CENTER HEART */
+    #centerHeart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      color: #ff1a66;
+      animation: pulse 1.5s infinite;
+      opacity: 0.9;
+    }
 
-@keyframes fall {
-  from { top: -10%; }
-  to { top: 100%; }
-}
+    #centerHeart span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+    }
 
-#msg {
-  position: absolute;
-  bottom: 25%;
-  width: 100%;
-  font-size: 20px;
-  padding: 0 20px;
-}
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
 
-#score {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
+    .heart {
+      position: absolute;
+      font-size: 28px;
+      cursor: pointer;
+      animation: fall 4s linear;
+      color: white;
+    }
 
-#timer {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-```
+    @keyframes fall {
+      from { top: -10%; }
+      to { top: 100%; }
+    }
+
+    #msg {
+      position: absolute;
+      bottom: 22%;
+      width: 100%;
+      font-size: 20px;
+      color: white;
+      padding: 0 20px;
+    }
+
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+    }
+
+    #timer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+    }
 
   </style>
+
 </head>
 
 <body>
+
+<!-- 🎵 MUSIC -->
 
 <audio id="music" loop>
   <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
@@ -81,6 +117,10 @@ button {
   <div id="score">❤️ 0</div>
   <div id="timer">⏳ 30</div>
   <div id="msg"></div>
+
+  <!-- BIG HEART -->
+
+  <div id="centerHeart">❤️<span>Kirti</span></div>
 </div>
 
 <div id="end" style="display:none;">
@@ -92,7 +132,6 @@ button {
 <script>
 let messages = [
 "Kirti… you’re genuinely special to me ❤️",
-
 "I like knowing you… understanding you…",
 "I want to take care of you",
 "I want to love you",
@@ -138,7 +177,8 @@ function startGame() {
 function createHeart() {
   let heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "Kirti";
+
+  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "Kirti ❤️";
   heart.style.left = Math.random()*90 + "%";
 
   heart.onclick = () => {
@@ -159,7 +199,7 @@ function endGame() {
   document.getElementById("end").style.display = "block";
 
   document.getElementById("final").innerText =
-  "I’m not perfect… but I’m being real. I don’t want to mess this up. Just give me a chance… I’ll prove it ❤️";
+  "I’m not perfect… but I’m being real. I don’t want to mess this up. Just give me a chance… ❤️";
 }
 </script>
 
