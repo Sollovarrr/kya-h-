@@ -10,56 +10,62 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
-      background: radial-gradient(circle at center, #ffc1da, #ff8fb8, #ff4d88);
       color: white;
+
+      /* 🔥 BACKGROUND IMAGE (replace if you want) */
+      background: url('https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?q=80&w=1974') no-repeat center/cover;
     }
+
+    /* SOFT PINK OVERLAY */
+    body::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,100,150,0.5), rgba(255,50,100,0.7));
+      top: 0;
+      left: 0;
+    }
+
+    * { position: relative; z-index: 2; }
 
     /* TOP UI */
     #topBar {
-      position: absolute;
-      width: 100%;
-      top: 10px;
       display: flex;
       justify-content: space-between;
-      padding: 0 20px;
-      box-sizing: border-box;
+      padding: 12px 15px;
     }
 
     .box {
-      background: rgba(255,255,255,0.2);
-      padding: 10px 18px;
+      background: rgba(255,255,255,0.25);
+      padding: 8px 14px;
       border-radius: 20px;
       backdrop-filter: blur(10px);
-      font-size: 16px;
     }
 
     /* TITLE */
     #title {
-      position: absolute;
-      width: 100%;
-      top: 70px;
       text-align: center;
-      font-size: 22px;
-      font-weight: 500;
+      margin-top: 10px;
+      font-size: 20px;
     }
 
     #subtitle {
       text-align: center;
-      font-size: 14px;
-      opacity: 0.8;
-      margin-top: 5px;
+      font-size: 13px;
+      opacity: 0.9;
     }
 
-    /* BIG HEART */
+    /* CENTER HEART */
     #centerHeart {
       position: absolute;
       top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 140px;
+      font-size: 120px;
       color: #ff2a75;
-      text-shadow: 0 0 40px rgba(255,0,100,0.8);
-      animation: pulse 2.5s infinite;
+      text-shadow: 0 0 40px rgba(255,0,100,0.9);
+      animation: pulse 2s infinite;
     }
 
     #centerHeart span {
@@ -67,23 +73,23 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: bold;
     }
 
     @keyframes pulse {
       0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.08); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
       100% { transform: translate(-50%, -50%) scale(1); }
     }
 
-    /* CLICK BUTTON */
+    /* BUTTON */
     #startBtn {
       position: absolute;
       bottom: 120px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.3);
       padding: 12px 25px;
       border-radius: 25px;
       backdrop-filter: blur(10px);
@@ -93,7 +99,7 @@
     /* MESSAGE BOX */
     #msgBox {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
@@ -102,20 +108,46 @@
       border-radius: 20px;
       backdrop-filter: blur(10px);
       text-align: center;
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    /* FLOAT HEARTS */
+    /* HEARTS */
     .heart {
       position: absolute;
-      font-size: 22px;
-      animation: fall 6s linear;
+      font-size: 20px;
+      animation: fall 7s linear;
       cursor: pointer;
     }
 
     @keyframes fall {
       from { top: -10%; }
       to { top: 110%; }
+    }
+
+    /* FINAL CHOICE */
+    #finalChoice {
+      display: none;
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #finalChoice div {
+      background: rgba(255,255,255,0.3);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      width: 85%;
+      margin: auto;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
     }
 
   </style>
@@ -145,6 +177,14 @@ Find all the hearts and read what I want to say to you… <br>
 <b>All of it is for you, Kirti 💗</b>
 </div>
 
+<div id="finalChoice">
+  <div>
+    <p>So… would you like to date me seriously? ❤️</p>
+    <button onclick="accept()">Yes 😊</button>
+    <button onclick="accept()">No 😤</button>
+  </div>
+</div>
+
 <script>
 let messages = [
 "Kirti… you’re genuinely special to me ❤️",
@@ -152,16 +192,12 @@ let messages = [
 "I want to take care of you",
 "I want to understand you the way you even don't",
 "I want to be there for you in small ways",
-
 "I’ve never been someone who puts effort like this",
 "I’ve never held bags for someone… never done 'ye lana wo lana'",
-
 "But with you… I actually enjoy doing all that",
 "I like taking care of you… genuinely",
-
 "And yeah… I’m trying, if I fail you need to teach me, and that goes vice versa",
 "Even making this… is me trying",
-
 "I just want you to trust me a little regardless of that past ❤️, as I am trying too.....",
 "Finally please don't show this to amu or anyone, very cheesy it is 😅"
 ];
@@ -176,7 +212,7 @@ function startGame() {
 
   document.getElementById("music").play();
 
-  setInterval(createHeart, 1200); // slower spawn
+  setInterval(createHeart, 1200);
 
   let timer = setInterval(() => {
     time--;
@@ -184,8 +220,7 @@ function startGame() {
 
     if (time <= 0) {
       clearInterval(timer);
-      document.getElementById("msgBox").innerHTML =
-      "I’m not perfect… but I’m being real. I don’t want to mess this up ❤️";
+      showFinal();
     }
   }, 1000);
 }
@@ -204,10 +239,24 @@ function createHeart() {
     score++;
     document.getElementById("score").innerText = score;
     heart.remove();
+
+    if (score === messages.length) {
+      showFinal();
+    }
   };
 
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
+  setTimeout(() => heart.remove(), 7000);
+}
+
+function showFinal() {
+  document.getElementById("msgBox").style.display = "none";
+  document.getElementById("finalChoice").style.display = "block";
+}
+
+function accept() {
+  document.getElementById("finalChoice").innerHTML =
+  "<h2>Hehe… I knew it 😌❤️</h2><p>I’ll make it worth it, promise.</p>";
 }
 </script>
 
