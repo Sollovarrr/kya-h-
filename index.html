@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Kirti ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(#ffe6f0, white);
+      overflow: hidden;
+      text-align: center;
+    }
+
+```
+#start, #end {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#game { display: none; }
+
+.heart {
+  position: absolute;
+  font-size: 28px;
+  cursor: pointer;
+  animation: fall 4s linear;
+}
+
+@keyframes fall {
+  from { top: -10%; }
+  to { top: 100%; }
+}
+
+#msg {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#timer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+```
+
+  </style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<div id="start">
+  <h2>Kirti… just 30 seconds? 🥺</h2>
+  <button onclick="startGame()">Start</button>
+</div>
+
+<div id="game">
+  <div id="score">❤️ 0</div>
+  <div id="timer">⏳ 30</div>
+  <div id="msg"></div>
+</div>
+
+<div id="end" style="display:none;">
+  <h2>Siddharth → Kirti ❤️</h2>
+  <p id="final"></p>
+  <button onclick="location.reload()">Again?</button>
+</div>
+
+<script>
+let messages = [
+"Kirti… you’re genuinely special to me ❤️",
+
+"I like knowing you… understanding you…",
+"I want to take care of you",
+"I want to love you",
+"I want to be there for you in small ways",
+
+"I’ve never been someone who puts effort like this",
+"I’ve never held bags for someone… never done 'ye lana wo lana'",
+
+"But with you… I actually enjoy doing all that",
+"I like taking care of you… genuinely",
+
+"I don’t know why I never wanted to do this for anyone else",
+"But for you… it just feels natural",
+
+"And yeah… I’m trying",
+"Even making this… is me trying",
+
+"I just want you to trust me a little ❤️"
+];
+
+let score = 0;
+let time = 30;
+
+function startGame() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("game").style.display = "block";
+  document.getElementById("music").play();
+
+  let gameInterval = setInterval(createHeart, 700);
+
+  let timerInterval = setInterval(() => {
+    time--;
+    document.getElementById("timer").innerText = "⏳ " + time;
+
+    if (time <= 0) {
+      clearInterval(timerInterval);
+      clearInterval(gameInterval);
+      endGame();
+    }
+  }, 1000);
+}
+
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "Kirti";
+  heart.style.left = Math.random()*90 + "%";
+
+  heart.onclick = () => {
+    if (score < messages.length) {
+      document.getElementById("msg").innerText = messages[score];
+    }
+    score++;
+    document.getElementById("score").innerText = "❤️ " + score;
+    heart.remove();
+  };
+
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+
+function endGame() {
+  document.getElementById("game").style.display = "none";
+  document.getElementById("end").style.display = "block";
+
+  document.getElementById("final").innerText =
+  "I’m not perfect… but I’m being real. I don’t want to mess this up. Just give me a chance… I’ll prove it ❤️";
+}
+</script>
+
+</body>
+</html>
